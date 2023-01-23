@@ -29,3 +29,4 @@ States:
 * All Playlists (object)
 * Songs in each playlist (array)
 * Songs to discover (array)
+[Wireframes - Project 2 V1.pdf](https://github.com/justinpjtate1/React.js_Music_UI/files/10480485/Wireframes.-.Project.2.V1.pdf)
