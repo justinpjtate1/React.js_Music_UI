@@ -1,7 +1,7 @@
 import './App.css';
 import React, { Component } from 'react'
 import Search from './Search';
-import Playlist_container from './Playlist'
+import Playlist_container from './Playlist';
 import Discovery from './Discovery';
 
 class App extends Component {
