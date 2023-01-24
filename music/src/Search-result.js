@@ -9,7 +9,7 @@ class Search_result extends Component {
                 <img src={this.props.result.artwork} className="song-artwork" id="song-artwork-search"/>
                 <h4 className="song-album" id="song-album-search">{this.props.result.album}</h4>
                 <h3 className="song-artist" id="song-artist-search">{this.props.result.artistName}</h3>
-                <Add_To_Playlist resultChecked={() => this.props.resultChecked(this.props.value)} resultUnchecked={() => this.props.resultUnchecked(this.props.value)}/>
+                <Add_To_Playlist resultChecked={() => this.props.resultChecked(this.props.value)} resultUnchecked={() => this.props.resultUnchecked(this.props.value)} />
             </div>
         )
     }

@@ -12,6 +12,7 @@ class App extends Component {
       searchInput: "",
       searchResults: [],
       resultsChecked: [],
+      songsToAddToPlaylist: [],
       playlistSongs: [] 
     }
   }
@@ -32,7 +33,9 @@ class App extends Component {
               trackName: value.trackName,
               artistName: value.artistName,
               artwork: value.artworkUrl60,
-              album: value.collectionName
+              album: value.collectionName,
+              minutes: Math.floor(value.trackTimeMillis/60000),
+              seconds: Math.floor((value.trackTimeMillis/1000) % 60)
             }
           )  
         });
@@ -57,11 +60,23 @@ class App extends Component {
     })
   }
 
+  // this.state.songsToAddToPlaylist.some(value => this.state.playlistSongs.indexOf(value) >= 0
+
+
+  queueToPlaylist = () => {
+      this.setState({
+        playlistSongs: this.state.playlistSongs.concat(this.state.songsToAddToPlaylist)
+      })
+  }
+
   addToPlaylist = () => {
     const newArr = this.state.searchResults.filter((value, index) => this.state.resultsChecked.includes(index))
     this.setState({
-      playlistSongs: [...newArr]
-    })
+      songsToAddToPlaylist: [...newArr],
+      
+      }, this.queueToPlaylist
+    )
+
   }
 
   render() {
@@ -70,13 +85,13 @@ class App extends Component {
       <h1>Create your best playlists</h1>
       <input type="text" placeholder='Search song or artist...' onChange={this.handleSearch}/>
       <button onClick={this.handleSearchClick}>Search!</button>
-      <button onClick={this.addToPlaylist}>Add To Playlist</button>
+      <button onClick={this.addToPlaylist} >Add To Playlist</button>
       {/* <select id="dropdown" onChange={this.addToPlaylist}>
         <option value="" defaultValue hidden>Select Playlist</option>
         <option value="playlist 1">Playlist 1</option>
         <option value="playlist 2">Playlist 2</option>
       </select> */}
-      <Search searchResults={this.state.searchResults} resultChecked={this.resultChecked} resultUnchecked={this.resultUnchecked}/>
+      <Search searchResults={this.state.searchResults} resultChecked={this.resultChecked} resultUnchecked={this.resultUnchecked} />
       <Playlist_container playlistSongs={this.state.playlistSongs}/>
       <Discovery />
       </>

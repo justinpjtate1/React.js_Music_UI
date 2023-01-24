@@ -14,11 +14,11 @@ class Add_To_Playlist extends Component {
                 check: !this.state.check
             },
             () => {
-                if(this.state.check === true) {
-                    this.props.resultChecked()
-                } else if(this.state.check === false) {
-                    this.props.resultUnchecked()
-                }
+                    if(this.state.check === true) {
+                        this.props.resultChecked()
+                    } else if(this.state.check === false) {
+                        this.props.resultUnchecked()
+                    }         
             }
         )
     
@@ -27,7 +27,7 @@ class Add_To_Playlist extends Component {
     render() {
         return(
             <>
-                <input type="checkbox"  className="song-checkbox" id="song-checkbox-search" onChange={this.check}/>
+                <input type="checkbox"  className="song-checkbox" id="song-checkbox-search" onClick={this.check}/>
             </>
         )
     }

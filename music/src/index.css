@@ -28,18 +28,29 @@ code {
 #song-title-search {
   grid-column: 2;
   grid-row: 1;
+  margin: 0
 }
 
 #song-album-search {
   grid-row: 2 / span 2;
+  margin: 0;
 }
 
 #song-artist-search {
   grid-column: 2;
   grid-row: 2;
+  margin: 0;
+  
 }
 
 #song-checkbox-search {
   grid-column: 3;
-  grid-row: 2
+  grid-row: 1
+}
+
+#playlist-song, #playlist-titles {
+  display: grid;
+  grid-template-columns: 0.3fr 0.3fr 0.3fr 0.1fr;
+  grid-template-rows: 1fr;
+  border: solid;
 }
