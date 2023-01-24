@@ -80,11 +80,10 @@ class App extends Component {
   }
 
   removeFromPlaylist = (num) => {
-    console.log('hi')
-    const newArr = this.state.playlistSongs.splice(num, 1)
-    console.log(newArr)
+    console.log(num)
+    const newArr = this.state.playlistSongs
     this.setState({
-      playlistSongs: newArr
+      playlistSongs: newArr.filter((value, index) => index !== num)
     })
   }
 
