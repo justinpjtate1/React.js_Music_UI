@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   resultChecked = (indexOfResults) => {
-    const newArr = this.state.resultsChecked
+    const newArr = this.state.resultsChecked;
     this.setState({
       resultsChecked: [...newArr, indexOfResults]
     })
