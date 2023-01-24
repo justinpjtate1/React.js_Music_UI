@@ -7,10 +7,12 @@ class Playlist_container extends Component {
         return(
             <>
             <Playlist_item />
-            <Playlist_song_list playlistSongs={this.props.playlistSongs}/>
+            <Playlist_song_list playlistSongs={this.props.playlistSongs} testButton={(num) => this.props.removeFromPlaylist(num)}/>
             </>
         )
     }
 }
 
 export default Playlist_container
+
+// removeFromPlaylist={(num) => this.props.removeFromPlaylist(num)}

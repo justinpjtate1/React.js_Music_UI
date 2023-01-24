@@ -1,7 +1,7 @@
 import Playlist_song from "./Playlist-song"
 
 function Playlist_song_list(props) {
-    const allSongs = props.playlistSongs.map((song, index) => <Playlist_song item={song} key={index}/>)
+    const allSongs = props.playlistSongs.map((song, index) => <Playlist_song item={song} key={index} number={index} testButton={(num) => props.removeFromPlaylist(num)}/>)
     return(
         <div className="playlist-song-list" id="playlist-song-list">
             <div className="playlist-titles" id="playlist-titles">
@@ -15,3 +15,5 @@ function Playlist_song_list(props) {
 }
 
 export default Playlist_song_list
+
+//removeFromPlaylist={(num) => props.removeFromPlaylist(num)}

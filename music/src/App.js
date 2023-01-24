@@ -79,6 +79,17 @@ class App extends Component {
 
   }
 
+  removeFromPlaylist = (num) => {
+    const newArr = this.state.playlistSongs.splice(num, 1)
+    this.setState({
+      playlistSongs: newArr
+    })
+  }
+
+  testButton = (num) => {
+    console.log(num)
+  }
+
   render() {
     return (
       <>
@@ -92,7 +103,7 @@ class App extends Component {
         <option value="playlist 2">Playlist 2</option>
       </select> */}
       <Search searchResults={this.state.searchResults} resultChecked={this.resultChecked} resultUnchecked={this.resultUnchecked} />
-      <Playlist_container playlistSongs={this.state.playlistSongs}/>
+      <Playlist_container playlistSongs={this.state.playlistSongs} testButton={this.removeFromPlaylist}/>
       <Discovery />
       </>
     );
@@ -101,3 +112,5 @@ class App extends Component {
 }
 
 export default App;
+
+// removeFromPlaylist={this.removeFromPlaylist}

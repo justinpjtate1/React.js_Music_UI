@@ -54,3 +54,7 @@ code {
   grid-template-rows: 1fr;
   border: solid;
 }
+
+#remove-song-playlist {
+  max-height: 20px
+}
