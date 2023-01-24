@@ -27,7 +27,7 @@ class Add_To_Playlist extends Component {
     render() {
         return(
             <>
-                <input type="checkbox" onChange={this.check}/>
+                <input type="checkbox"  className="song-checkbox" id="song-checkbox-search" onChange={this.check}/>
             </>
         )
     }

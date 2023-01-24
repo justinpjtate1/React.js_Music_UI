@@ -15,4 +15,31 @@ code {
 .search-result {
   background-color: grey;
   margin: 10px 0px;
+  display: grid;
+  grid-template-rows: 0.5fr 0.5fr;
+  grid-template-columns: 0.33fr 0.33fr 0.34fr;
+}
+
+#song-artwork-search {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#song-title-search {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#song-album-search {
+  grid-row: 2 / span 2;
+}
+
+#song-artist-search {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+#song-checkbox-search {
+  grid-column: 3;
+  grid-row: 2
 }
