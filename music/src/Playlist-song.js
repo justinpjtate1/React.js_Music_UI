@@ -1,7 +1,7 @@
-function Playlist_song() {
+function Playlist_song(props) {
     return(
         <>
-        <div>Song 1</div>
+        <div>{props.item.trackName}</div>
         </>
     )
 }

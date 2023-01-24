@@ -7,7 +7,7 @@ class Playlist_container extends Component {
         return(
             <>
             <Playlist_item />
-            <Playlist_song_list />
+            <Playlist_song_list playlistSongs={this.props.playlistSongs}/>
             </>
         )
     }

@@ -10,7 +10,9 @@ class App extends Component {
 
     this.state = {
       searchInput: "",
-      searchResults: []
+      searchResults: [],
+      resultsChecked: [],
+      playlistSongs: [] 
     }
   }
 
@@ -20,7 +22,7 @@ class App extends Component {
     })
   }
 
-  handleClick = (e) => {
+  handleSearchClick = () => {
     fetch(`https://itunes.apple.com/search?term=${this.state.searchInput}&media=music&limit=5`)
       .then(response => response.json())
       .then(response => {
@@ -29,7 +31,7 @@ class App extends Component {
             {
               trackName: value.trackName,
               artistName: value.artistName,
-              artwork: value.artworkUrl100,
+              artwork: value.artworkUrl60,
               album: value.collectionName
             }
           )  
@@ -41,14 +43,41 @@ class App extends Component {
       })
   }
 
+  resultChecked = (indexOfResults) => {
+    const newArr = this.state.resultsChecked
+    this.setState({
+      resultsChecked: [...newArr, indexOfResults]
+    })
+  }
+
+  resultUnchecked = (indexOfResults) => {
+    const newArr = this.state.resultsChecked
+    this.setState({
+      resultsChecked: newArr.filter(value => value !== indexOfResults)
+    })
+  }
+
+  addToPlaylist = () => {
+    const newArr = this.state.searchResults.filter((value, index) => this.state.resultsChecked.includes(index))
+    this.setState({
+      playlistSongs: [...newArr]
+    })
+  }
+
   render() {
     return (
       <>
       <h1>Create your best playlists</h1>
       <input type="text" placeholder='Search song or artist...' onChange={this.handleSearch}/>
-      <button onClick={this.handleClick}>Search!</button>
-      <Search searchResults={this.state.searchResults} />
-      <Playlist_container />
+      <button onClick={this.handleSearchClick}>Search!</button>
+      <button onClick={this.addToPlaylist}>Add To Playlist</button>
+      {/* <select id="dropdown" onChange={this.addToPlaylist}>
+        <option value="" defaultValue hidden>Select Playlist</option>
+        <option value="playlist 1">Playlist 1</option>
+        <option value="playlist 2">Playlist 2</option>
+      </select> */}
+      <Search searchResults={this.state.searchResults} resultChecked={this.resultChecked} resultUnchecked={this.resultUnchecked}/>
+      <Playlist_container playlistSongs={this.state.playlistSongs}/>
       <Discovery />
       </>
     );

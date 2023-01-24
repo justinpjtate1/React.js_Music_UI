@@ -1,7 +1,6 @@
-function Playlist_item() {
+function Playlist_item(props) {
     return(
         <>
-        <div>Playlist 1</div>
         </>
     )
 }
