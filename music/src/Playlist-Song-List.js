@@ -8,6 +8,7 @@ function Playlist_song_list(props) {
                 <div>Title</div>
                 <div>Artist</div>
                 <div>length</div>
+                <button onClick={() => props.removeAllFromPlaylist()}>Clear All</button>
             </div>
             {allSongs}
         </div>

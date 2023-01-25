@@ -80,15 +80,16 @@ class App extends Component {
   }
 
   removeFromPlaylist = (num) => {
-    console.log(num)
     const newArr = this.state.playlistSongs
     this.setState({
       playlistSongs: newArr.filter((value, index) => index !== num)
     })
   }
 
-  testButton = (num) => {
-    console.log(num)
+  removeAllFromPlaylist = () => {
+    this.setState({
+      playlistSongs: []
+    })
   }
 
   render() {
@@ -104,7 +105,7 @@ class App extends Component {
         <option value="playlist 2">Playlist 2</option>
       </select> */}
       <Search searchResults={this.state.searchResults} resultChecked={this.resultChecked} resultUnchecked={this.resultUnchecked} />
-      <Playlist_container playlistSongs={this.state.playlistSongs} removeFromPlaylist={this.removeFromPlaylist}/>
+      <Playlist_container playlistSongs={this.state.playlistSongs} removeFromPlaylist={this.removeFromPlaylist} removeAllFromPlaylist={this.removeAllFromPlaylist} />
       <Discovery />
       </>
     );
