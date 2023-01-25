@@ -21,6 +21,7 @@ class App extends Component {
       }], 
       playlistInput: "",
       playlistSelected: "",
+      playlistDisplayed: ""
     }
   }
 
@@ -96,16 +97,28 @@ class App extends Component {
   }
 
   removeFromPlaylist = (num) => {
-    const newArr = this.state.playlistSongs
+    const newArr3 = this.state.playlists.filter((value, index) => index !== this.state.playlistDisplayed)
+    console.log(newArr3)
+    const newArr = this.state.playlists[this.state.playlistDisplayed].songs
+    console.log(newArr)
+    const newArr2 = newArr.filter((value, index) => index !== num)
+    console.log(newArr2)
+    const newObj = {name: this.state.playlists[this.state.playlistDisplayed].name, songs: newArr2}
+    console.log(newObj)
+    newArr3.splice(this.state.playlistDisplayed, 0, newObj)
+
     this.setState({
-      playlistSongs: newArr.filter((value, index) => index !== num)
-    })
+      playlists: newArr3
+    }, this.showPlaylist)
   }
 
   removeAllFromPlaylist = () => {
+    const arr1 = this.state.playlists.filter((value, index) => index !== this.state.playlistDisplayed)
+    const newObj = {name: this.state.playlists[this.state.playlistDisplayed].name, songs: []}
+    arr1.splice(this.state.playlistSelected, 0, newObj)
     this.setState({
-      playlistSongs: []
-    })
+      playlists: arr1
+    }, this.showPlaylist)
   }
 
   newPlaylistInput = (e) => {
@@ -120,11 +133,16 @@ class App extends Component {
     })
   }
 
-  displayPlaylist = (e) => {
+  playlistToDisplay = (e) => {
     this.setState({
-      playlistSongs: this.state.playlists[e.target.id].songs
+      playlistDisplayed: +(e.target.id)
+    }, this.showPlaylist)
+  }
+
+  showPlaylist = () => {
+    this.setState({
+      playlistSongs: this.state.playlists[this.state.playlistDisplayed].songs
     })
-   
   }
 
   render() {
@@ -146,7 +164,7 @@ class App extends Component {
       addNewPlaylist={this.addNewPlaylist}
       playlists={this.state.playlists}
       newPlaylistInput={this.newPlaylistInput}
-      displayPlaylist={this.displayPlaylist}/>
+      playlistToDisplay={this.playlistToDisplay}/>
       <Discovery />
       </>
     );
