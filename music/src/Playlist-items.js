@@ -7,7 +7,7 @@ function Playlist_items(props) {
                                     value={index} 
                                     playlistToDisplay={(e) => props.playlistToDisplay(e)} 
                                     editPlaylistName={(index) => props.editPlaylistName(index)}
-                                    editingInProgress={props.editingInProgress}
+                                    playlistDisplayed={props.playlistDisplayed}
                 />
         } 
     )

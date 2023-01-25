@@ -22,8 +22,7 @@ class App extends Component {
       playlistInput: "",
       playlistSelected: "",
       playlistDisplayed: "",
-      nameOfPlaylistToDisplay: "",
-      editingInProgress: false
+      nameOfPlaylistToDisplay: ""
     }
   }
 
@@ -190,8 +189,8 @@ class App extends Component {
                           newPlaylistInput={this.newPlaylistInput}
                           playlistToDisplay={this.playlistToDisplay}
                           editPlaylistName={this.editPlaylistName}
-                          editingInProgress={this.state.editingInProgress}
                           nameOfPlaylistToDisplay={this.state.nameOfPlaylistToDisplay}
+                          playlistDisplayed={this.state.playlistDisplayed}
       />
       <Discovery />
       </>

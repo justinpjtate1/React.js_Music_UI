@@ -17,5 +17,3 @@ function Playlist_song_list(props) {
 }
 
 export default Playlist_song_list
-
-//removeFromPlaylist={(num) => props.removeFromPlaylist(num)}

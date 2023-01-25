@@ -11,7 +11,7 @@ class Playlist_container extends Component {
                             newPlaylistInput={(e) => this.props.newPlaylistInput(e)}
                             playlistToDisplay={(e) => this.props.playlistToDisplay(e)}
                             editPlaylistName={(index) => this.props.editPlaylistName(index)}
-                            editingInProgress={this.props.editingInProgress}
+                            playlistDisplayed={this.props.playlistDisplayed}
                             />
             <Playlist_song_list playlistSongs={this.props.playlistSongs}
                                 removeFromPlaylist={(num) => this.props.removeFromPlaylist(num)}
