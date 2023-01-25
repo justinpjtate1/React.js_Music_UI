@@ -68,6 +68,6 @@ code {
   max-height: 15px
 }
 
-#playlist-item {
+.playlist-item {
   cursor: pointer
 }

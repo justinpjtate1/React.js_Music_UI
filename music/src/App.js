@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Search from './Search';
 import Playlist_container from './Playlist';
 import Discovery from './Discovery';
+import Playlist_dropdown_options from './Playlist-dropdown-options';
 
 class App extends Component {
   constructor(props) {
@@ -14,10 +15,12 @@ class App extends Component {
       resultsChecked: [],
       songsToAddToPlaylist: [],
       playlistSongs: [],
-      playlists: ["Playlist 1"], 
+      playlists: [{
+        name: "Playlist 1",
+        songs: []
+      }], 
       playlistInput: "",
       playlistSelected: "",
-      songsToDisplay: ""
     }
   }
 
@@ -64,12 +67,21 @@ class App extends Component {
     })
   }
 
-  // this.state.songsToAddToPlaylist.some(value => this.state.playlistSongs.indexOf(value) >= 0
+  updateSelectedPlaylist = (e) => {
+    this.setState({
+      playlistSelected: +(e.target.value)
+    })
+  }
 
+  addToSelectedPlaylist = () => {
+    const newArr = this.state.playlists[this.state.playlistSelected].songs.concat(this.state.songsToAddToPlaylist)
+    const arr1 = this.state.playlists.filter((value, index) => index !== this.state.playlistSelected)
+    const newObj = {name: this.state.playlists[this.state.playlistSelected].name, songs: [...newArr]}
+    arr1.splice(this.state.playlistSelected, 0, newObj)
 
-  queueToPlaylist = () => {
-      this.setState({
-        playlistSongs: this.state.playlistSongs.concat(this.state.songsToAddToPlaylist)
+    this.setState({
+      playlists: arr1
+
       })
   }
 
@@ -78,7 +90,7 @@ class App extends Component {
     this.setState({
       songsToAddToPlaylist: [...newArr],
       
-      }, this.queueToPlaylist
+      }, this.addToSelectedPlaylist
     )
 
   }
@@ -104,24 +116,37 @@ class App extends Component {
 
   addNewPlaylist = () => {
     this.setState({
-      playlists: this.state.playlists.concat(this.state.playlistInput)
+      playlists: this.state.playlists.concat({name: this.state.playlistInput, songs: []})
     })
   }
 
+  displayPlaylist = (e) => {
+    this.setState({
+      playlistSongs: this.state.playlists[e.target.id].songs
+    })
+   
+  }
+
   render() {
+    const allPlaylistDropdowns = this.state.playlists.map((value, index) => <Playlist_dropdown_options playlistName={value.name} key={index} playlistNumber={index} />)
     return (
       <>
       <h1>Create your best playlists</h1>
       <input type="text" placeholder='Search song or artist...' onChange={this.handleSearch}/>
       <button onClick={this.handleSearchClick}>Search!</button>
       <button onClick={this.addToPlaylist} >Add To Playlist</button>
-      {/* <select id="dropdown" onChange={this.addToPlaylist}>
+      <select id="dropdown" onChange={this.updateSelectedPlaylist}>
         <option value="" defaultValue hidden>Select Playlist</option>
-        <option value="playlist 1">Playlist 1</option>
-        <option value="playlist 2">Playlist 2</option>
-      </select> */}
+        {allPlaylistDropdowns}
+      </select>
       <Search searchResults={this.state.searchResults} resultChecked={this.resultChecked} resultUnchecked={this.resultUnchecked} />
-      <Playlist_container playlistSongs={this.state.playlistSongs} removeFromPlaylist={this.removeFromPlaylist} removeAllFromPlaylist={this.removeAllFromPlaylist} addNewPlaylist={this.addNewPlaylist} playlists={this.state.playlists} newPlaylistInput={this.newPlaylistInput}/>
+      <Playlist_container playlistSongs={this.state.playlistSongs}
+      removeFromPlaylist={this.removeFromPlaylist}
+      removeAllFromPlaylist={this.removeAllFromPlaylist}
+      addNewPlaylist={this.addNewPlaylist}
+      playlists={this.state.playlists}
+      newPlaylistInput={this.newPlaylistInput}
+      displayPlaylist={this.displayPlaylist}/>
       <Discovery />
       </>
     );
@@ -130,5 +155,3 @@ class App extends Component {
 }
 
 export default App;
-
-// removeFromPlaylist={this.removeFromPlaylist}
