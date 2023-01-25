@@ -21,7 +21,8 @@ class App extends Component {
       }], 
       playlistInput: "",
       playlistSelected: "",
-      playlistDisplayed: ""
+      playlistDisplayed: "",
+      editingInProgress: false
     }
   }
 
@@ -98,13 +99,9 @@ class App extends Component {
 
   removeFromPlaylist = (num) => {
     const newArr3 = this.state.playlists.filter((value, index) => index !== this.state.playlistDisplayed)
-    console.log(newArr3)
     const newArr = this.state.playlists[this.state.playlistDisplayed].songs
-    console.log(newArr)
     const newArr2 = newArr.filter((value, index) => index !== num)
-    console.log(newArr2)
     const newObj = {name: this.state.playlists[this.state.playlistDisplayed].name, songs: newArr2}
-    console.log(newObj)
     newArr3.splice(this.state.playlistDisplayed, 0, newObj)
 
     this.setState({
@@ -145,6 +142,20 @@ class App extends Component {
     })
   }
 
+  editPlaylistName = (index) => {
+    const newName = prompt('new playlist name')
+    const arr1 = this.state.playlists
+    console.log(arr1)
+    const playlistToModify = arr1[index]
+    playlistToModify.name = newName
+    const arr2 = arr1.filter((value, index) => index !== index)
+    arr2.splice(index, 0, playlistToModify)
+
+    this.setState({
+      playlists: arr1
+    })
+  }
+
   render() {
     const allPlaylistDropdowns = this.state.playlists.map((value, index) => <Playlist_dropdown_options playlistName={value.name} key={index} playlistNumber={index} />)
     return (
@@ -157,14 +168,20 @@ class App extends Component {
         <option value="" defaultValue hidden>Select Playlist</option>
         {allPlaylistDropdowns}
       </select>
-      <Search searchResults={this.state.searchResults} resultChecked={this.resultChecked} resultUnchecked={this.resultUnchecked} />
+      <Search searchResults={this.state.searchResults} 
+              resultChecked={this.resultChecked}
+              resultUnchecked={this.resultUnchecked} 
+      />
       <Playlist_container playlistSongs={this.state.playlistSongs}
-      removeFromPlaylist={this.removeFromPlaylist}
-      removeAllFromPlaylist={this.removeAllFromPlaylist}
-      addNewPlaylist={this.addNewPlaylist}
-      playlists={this.state.playlists}
-      newPlaylistInput={this.newPlaylistInput}
-      playlistToDisplay={this.playlistToDisplay}/>
+                          removeFromPlaylist={this.removeFromPlaylist}
+                          removeAllFromPlaylist={this.removeAllFromPlaylist}
+                          addNewPlaylist={this.addNewPlaylist}
+                          playlists={this.state.playlists}
+                          newPlaylistInput={this.newPlaylistInput}
+                          playlistToDisplay={this.playlistToDisplay}
+                          editPlaylistName={this.editPlaylistName}
+                          editingInProgress={this.state.editingInProgress}
+      />
       <Discovery />
       </>
     );
