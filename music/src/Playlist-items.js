@@ -14,9 +14,6 @@ function Playlist_items(props) {
 
     return(
         <>
-        {/* <select name="playlists" id="playlists" multiple>
-            {allPlaylists}
-        </select> */}
         <ul id="playlists">
             {allPlaylists}
         </ul>

@@ -22,6 +22,7 @@ class App extends Component {
       playlistInput: "",
       playlistSelected: "",
       playlistDisplayed: "",
+      nameOfPlaylistToDisplay: "",
       editingInProgress: false
     }
   }
@@ -132,7 +133,8 @@ class App extends Component {
 
   playlistToDisplay = (e) => {
     this.setState({
-      playlistDisplayed: +(e.target.id)
+      playlistDisplayed: +(e.target.id),
+      nameOfPlaylistToDisplay: this.state.playlists[+(e.target.id)].name
     }, this.showPlaylist)
   }
 
@@ -181,6 +183,7 @@ class App extends Component {
                           playlistToDisplay={this.playlistToDisplay}
                           editPlaylistName={this.editPlaylistName}
                           editingInProgress={this.state.editingInProgress}
+                          nameOfPlaylistToDisplay={this.state.nameOfPlaylistToDisplay}
       />
       <Discovery />
       </>

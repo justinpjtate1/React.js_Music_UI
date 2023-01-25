@@ -16,6 +16,7 @@ class Playlist_container extends Component {
             <Playlist_song_list playlistSongs={this.props.playlistSongs}
                                 removeFromPlaylist={(num) => this.props.removeFromPlaylist(num)}
                                 removeAllFromPlaylist={() => this.props.removeAllFromPlaylist()}
+                                nameOfPlaylistToDisplay={this.props.nameOfPlaylistToDisplay}
                                 />
             </>
         )
@@ -23,5 +24,3 @@ class Playlist_container extends Component {
 }
 
 export default Playlist_container
-
-// removeFromPlaylist={(num) => this.props.removeFromPlaylist(num)}
