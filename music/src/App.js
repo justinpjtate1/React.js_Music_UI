@@ -172,26 +172,30 @@ class App extends Component {
       <h1>Create your best playlists</h1>
       <input type="text" placeholder='Search song or artist...' onChange={this.handleSearch}/>
       <button onClick={this.handleSearchClick}>Search!</button>
-      <button onClick={this.addToPlaylist} >Add To Playlist</button>
+      
+      <main>
+        <Search searchResults={this.state.searchResults} 
+                resultChecked={this.resultChecked}
+                resultUnchecked={this.resultUnchecked} 
+        />
+        <Playlist_container playlistSongs={this.state.playlistSongs}
+                            removeFromPlaylist={this.removeFromPlaylist}
+                            removeAllFromPlaylist={this.removeAllFromPlaylist}
+                            addNewPlaylist={this.addNewPlaylist}
+                            playlists={this.state.playlists}
+                            newPlaylistInput={this.newPlaylistInput}
+                            playlistToDisplay={this.playlistToDisplay}
+                            editPlaylistName={this.editPlaylistName}
+                            nameOfPlaylistToDisplay={this.state.nameOfPlaylistToDisplay}
+                            playlistDisplayed={this.state.playlistDisplayed}
+        />
+      </main>
       <select id="dropdown" onChange={this.updateSelectedPlaylist}>
         <option value="" defaultValue hidden>Select Playlist</option>
         {allPlaylistDropdowns}
       </select>
-      <Search searchResults={this.state.searchResults} 
-              resultChecked={this.resultChecked}
-              resultUnchecked={this.resultUnchecked} 
-      />
-      <Playlist_container playlistSongs={this.state.playlistSongs}
-                          removeFromPlaylist={this.removeFromPlaylist}
-                          removeAllFromPlaylist={this.removeAllFromPlaylist}
-                          addNewPlaylist={this.addNewPlaylist}
-                          playlists={this.state.playlists}
-                          newPlaylistInput={this.newPlaylistInput}
-                          playlistToDisplay={this.playlistToDisplay}
-                          editPlaylistName={this.editPlaylistName}
-                          nameOfPlaylistToDisplay={this.state.nameOfPlaylistToDisplay}
-                          playlistDisplayed={this.state.playlistDisplayed}
-      />
+      <button onClick={this.addToPlaylist} >Add To Playlist</button>
+      
       <Discovery />
       </>
     );

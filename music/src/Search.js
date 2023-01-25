@@ -7,9 +7,9 @@ class Search extends Component {
         const allResults = this.props.searchResults.map((value, index) => {
             return <Search_result result={value} key={index} value={index} resultChecked={(indexOfResult) => this.props.resultChecked(indexOfResult)} resultUnchecked={(indexOfResult) => this.props.resultUnchecked(indexOfResult)} />})
         return(
-            <>
+            <div id="search-container">
             {allResults}
-            </>
+            </div>
         )
     }
 }

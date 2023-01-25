@@ -5,7 +5,7 @@ import Playlist_song_list from "./Playlist-Song-List";
 class Playlist_container extends Component {
     render() {
         return(
-            <>
+            <div id="playlist-container">
             <Playlist_items addNewPlaylist={() => this.props.addNewPlaylist()}
                             playlists={this.props.playlists}
                             newPlaylistInput={(e) => this.props.newPlaylistInput(e)}
@@ -18,7 +18,7 @@ class Playlist_container extends Component {
                                 removeAllFromPlaylist={() => this.props.removeAllFromPlaylist()}
                                 nameOfPlaylistToDisplay={this.props.nameOfPlaylistToDisplay}
                                 />
-            </>
+            </div>
         )
     }
 }

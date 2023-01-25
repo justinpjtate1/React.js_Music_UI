@@ -13,15 +13,13 @@ function Playlist_items(props) {
     )
 
     return(
-        <>
-        <ul id="playlists">
+        <div id="list-of-playlists">
+            <ul id="playlists">
             {allPlaylists}
-        </ul>
-        <button onClick={() => props.addNewPlaylist()}>Add Playlist</button>
-        <div id="name-playlist">Playlist Name:
-            <input type="text" onChange={(e) => props.newPlaylistInput(e)}/>
+            </ul>
+            <button onClick={() => props.addNewPlaylist()}>+</button>
+            <input type="text" id="name-playlist" onChange={(e) => props.newPlaylistInput(e)}/>
         </div>
-        </>
     )
 }
 
