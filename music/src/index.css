@@ -8,6 +8,8 @@ body {
   background-color: lightslategray;
   color: rgb(233, 233, 233);
   text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 code {
@@ -40,6 +42,7 @@ code {
 #song-album-search {
   grid-row: 2 / span 2;
   margin: 0;
+  max-width: 90px
 }
 
 #song-artist-search {
@@ -52,7 +55,6 @@ code {
 #song-checkbox-search {
   grid-column: 3;
   grid-row: 1;
-  max-height: 30px;
 }
 
 #playlist-song, #playlist-titles {
@@ -80,11 +82,14 @@ code {
 }
 
 .playlist-item {
-  cursor: pointer
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px
 }
 
 li:active {
-  background-color: yellow;
+  background-color: rgb(233, 233, 233);
+  color: lightslategray;
 }
 
 #search-container {

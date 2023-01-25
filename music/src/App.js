@@ -16,12 +16,12 @@ class App extends Component {
       songsToAddToPlaylist: [],
       playlistSongs: [],
       playlists: [{
-        name: "Playlist 1",
+        name: "Default Playlist",
         songs: []
       }], 
       playlistInput: "",
-      playlistSelected: "",
-      playlistDisplayed: "",
+      playlistSelected: 0,
+      playlistDisplayed: 0,
       nameOfPlaylistToDisplay: ""
     }
   }
@@ -186,12 +186,11 @@ class App extends Component {
                             newPlaylistInput={this.newPlaylistInput}
                             playlistToDisplay={this.playlistToDisplay}
                             editPlaylistName={this.editPlaylistName}
-                            nameOfPlaylistToDisplay={this.state.nameOfPlaylistToDisplay}
+                            nameOfPlaylistToDisplay={this.state.playlists[this.state.playlistDisplayed].name}
                             playlistDisplayed={this.state.playlistDisplayed}
         />
       </main>
       <select id="dropdown" onChange={this.updateSelectedPlaylist}>
-        <option value="" defaultValue hidden>Select Playlist</option>
         {allPlaylistDropdowns}
       </select>
       <button onClick={this.addToPlaylist} >Add To Playlist</button>

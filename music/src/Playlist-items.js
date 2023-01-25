@@ -17,8 +17,8 @@ function Playlist_items(props) {
             <ul id="playlists">
             {allPlaylists}
             </ul>
+            <input type="text" id="name-playlist" placeholder='Create new playlist...' onChange={(e) => props.newPlaylistInput(e)}/>
             <button onClick={() => props.addNewPlaylist()}>+</button>
-            <input type="text" id="name-playlist" onChange={(e) => props.newPlaylistInput(e)}/>
         </div>
     )
 }

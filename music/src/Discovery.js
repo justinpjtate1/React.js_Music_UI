@@ -4,7 +4,7 @@ class Discovery extends Component {
     render() {
         return(
             <>
-            <div>Songs you might like</div>
+            <div>You may also like</div>
             </>
         )
     }
