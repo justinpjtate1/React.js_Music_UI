@@ -13,7 +13,11 @@ class App extends Component {
       searchResults: [],
       resultsChecked: [],
       songsToAddToPlaylist: [],
-      playlistSongs: [] 
+      playlistSongs: [],
+      playlists: ["Playlist 1"], 
+      playlistInput: "",
+      playlistSelected: "",
+      songsToDisplay: ""
     }
   }
 
@@ -92,6 +96,18 @@ class App extends Component {
     })
   }
 
+  newPlaylistInput = (e) => {
+    this.setState({
+      playlistInput: e.target.value
+    })
+  }
+
+  addNewPlaylist = () => {
+    this.setState({
+      playlists: this.state.playlists.concat(this.state.playlistInput)
+    })
+  }
+
   render() {
     return (
       <>
@@ -105,7 +121,7 @@ class App extends Component {
         <option value="playlist 2">Playlist 2</option>
       </select> */}
       <Search searchResults={this.state.searchResults} resultChecked={this.resultChecked} resultUnchecked={this.resultUnchecked} />
-      <Playlist_container playlistSongs={this.state.playlistSongs} removeFromPlaylist={this.removeFromPlaylist} removeAllFromPlaylist={this.removeAllFromPlaylist} />
+      <Playlist_container playlistSongs={this.state.playlistSongs} removeFromPlaylist={this.removeFromPlaylist} removeAllFromPlaylist={this.removeAllFromPlaylist} addNewPlaylist={this.addNewPlaylist} playlists={this.state.playlists} newPlaylistInput={this.newPlaylistInput}/>
       <Discovery />
       </>
     );

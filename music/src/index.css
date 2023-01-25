@@ -58,3 +58,16 @@ code {
 #remove-song-playlist {
   max-height: 20px
 }
+
+#playlists {
+  list-style: none;
+  border: solid
+}
+
+#edit-pencil {
+  max-height: 15px
+}
+
+#playlist-item {
+  cursor: pointer
+}
