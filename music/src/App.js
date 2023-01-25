@@ -70,6 +70,14 @@ class App extends Component {
     })
   }
 
+  addToAlreadyDisplayedPlaylist = () => {
+    if(this.state.playlistDisplayed === this.state.playlistSelected && this.state.playlistSelected !== "") {
+      this.setState({
+        playlistSongs: this.state.playlists[this.state.playlistSelected].songs
+      })
+    }
+  }
+
   updateSelectedPlaylist = (e) => {
     this.setState({
       playlistSelected: +(e.target.value)
@@ -85,7 +93,7 @@ class App extends Component {
     this.setState({
       playlists: arr1
 
-      })
+      }, this.addToAlreadyDisplayedPlaylist)
   }
 
   addToPlaylist = () => {
